@@ -1,0 +1,81 @@
+{
+  "course": {
+    "shortName": "iot",
+    "fullName": "Internet de las cosas",
+    "year": "2026",
+    "description": "El curso Internet de las cosas introduce al estudiante en el diseño, comprensión y aplicación de sistemas conectados capaces de capturar datos del entorno físico, procesarlos y generar decisiones útiles.",
+    "openClassLabel": "Open Class"
+  },
+  "generation": {
+    "weeksTotal": 8,
+    "activeWeeks": [
+      1,
+      2,
+      3
+    ],
+    "exportPortal": false,
+    "overwriteLaunchers": true,
+    "overwritePortal": true,
+    "overwriteDecks": true,
+    "overwritePackageScripts": true,
+    "overwriteWeekContent": false
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "title": "Generalidades de IoT",
+      "date": "Mayo 04 de 2026",
+      "centralTheme": "Introducción al Internet de las cosas, componentes y aplicaciones",
+      "activity": "Actividad de reconocimiento conceptual"
+    },
+    {
+      "number": 2,
+      "title": "Estructuras Tecnológicas que soportan IoT",
+      "date": "Mayo 11 de 2026",
+      "centralTheme": "Arquitectura, sensores, conectividad, edge, fog y cloud",
+      "activity": "Actividad práctica con simulación IoT"
+    },
+    {
+      "number": 3,
+      "title": "Seguridad en IoT",
+      "date": "Mayo 18 de 2026",
+      "centralTheme": "Riesgos, vulnerabilidades, controles, monitoreo y buenas prácticas de seguridad",
+      "activity": "Simulación de alertas y clasificación de riesgos"
+    },
+    {
+      "number": 4,
+      "title": "Título semana 4",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad relacionada"
+    },
+    {
+      "number": 5,
+      "title": "Título semana 5",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad relacionada"
+    },
+    {
+      "number": 6,
+      "title": "Título semana 6",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad relacionada"
+    },
+    {
+      "number": 7,
+      "title": "Título semana 7",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad relacionada"
+    },
+    {
+      "number": 8,
+      "title": "Título semana 8",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad relacionada"
+    }
+  ]
+}

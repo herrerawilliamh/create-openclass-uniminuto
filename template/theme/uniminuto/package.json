@@ -1,0 +1,13 @@
+{
+  "name": "slidev-theme-uniminuto",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./styles/index.ts",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "slidev": {
+    "colorSchema": "light"
+  }
+}

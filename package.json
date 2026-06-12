@@ -1,0 +1,39 @@
+{
+  "name": "create-openclass-uniminuto",
+  "version": "1.4.2",
+  "description": "Creador de proyectos Open Class UNIMINUTO basados en Slidev, con generación incremental por semanas y GitHub Pages.",
+  "type": "module",
+  "bin": {
+    "create-openclass-uniminuto": "bin/create-openclass-uniminuto.mjs"
+  },
+  "files": [
+    "bin",
+    "template",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "slidev",
+    "openclass",
+    "uniminuto",
+    "edtech",
+    "template",
+    "cli"
+  ],
+  "author": "William Herrera",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herrerawilliamh/create-openclass-uniminuto.git"
+  },
+  "homepage": "https://github.com/herrerawilliamh/create-openclass-uniminuto#readme",
+  "bugs": {
+    "url": "https://github.com/herrerawilliamh/create-openclass-uniminuto/issues"
+  }
+}

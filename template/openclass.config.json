@@ -1,0 +1,79 @@
+{
+  "course": {
+    "shortName": "demo",
+    "fullName": "Curso Open Class de ejemplo",
+    "year": "2026",
+    "description": "Curso demostrativo para probar la plantilla OpenClass Template UNIMINUTO. Edita este texto en openclass.config.json para adaptarlo al curso real.",
+    "openClassLabel": "Open Class"
+  },
+  "generation": {
+    "weeksTotal": 8,
+    "activeWeeks": [
+      1
+    ],
+    "exportPortal": false,
+    "overwriteLaunchers": true,
+    "overwritePortal": true,
+    "overwriteDecks": true,
+    "overwritePackageScripts": true,
+    "overwriteWeekContent": false
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "title": "Semana de ejemplo",
+      "date": "2026",
+      "centralTheme": "Estructura básica de una Open Class",
+      "activity": "Revisar la estructura generada y probar la presentación"
+    },
+    {
+      "number": 2,
+      "title": "Título semana 2",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 3,
+      "title": "Título semana 3",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 4,
+      "title": "Título semana 4",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 5,
+      "title": "Título semana 5",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 6,
+      "title": "Título semana 6",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 7,
+      "title": "Título semana 7",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    },
+    {
+      "number": 8,
+      "title": "Título semana 8",
+      "date": "2026",
+      "centralTheme": "Tema central de la semana",
+      "activity": "Actividad o evaluación relacionada"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "course": {
+    "shortName": "iot",
+    "fullName": "Internet de las cosas",
+    "year": "2026",
+    "description": "El curso Internet de las cosas introduce al estudiante en el diseño, comprensión y aplicación de sistemas conectados capaces de capturar datos del entorno físico, procesarlos y generar decisiones útiles. A lo largo del curso se estudian sensores, actuadores, microcontroladores, conectividad, procesamiento en la nube, edge computing, seguridad, interoperabilidad, eficiencia energética y aplicaciones en contextos industriales, empresariales, educativos, agrícolas, domésticos y urbanos.",
+    "openClassLabel": "Open Class"
+  },
+  "generation": {
+    "weeksTotal": 8,
+    "activeWeeks": [1, 2, 3, 4, 5, 6],
+    "exportPortal": true,
+    "overwriteLaunchers": true,
+    "overwritePortal": true,
+    "overwriteDecks": true,
+    "overwritePackageScripts": true,
+    "overwriteWeekContent": false
+  },
+  "weeks": [
+    {
+      "number": 1,
+      "title": "Generalidades de IoT",
+      "date": "Mayo 04 de 2026",
+      "centralTheme": "Introducción al Internet de las cosas, componentes, ecosistema conectado y recorrido del dato desde el mundo físico hasta una decisión digital.",
+      "activity": "Actividad de reconocimiento conceptual y práctica guiada con ESP32 y MicroPython en Wokwi."
+    },
+    {
+      "number": 2,
+      "title": "Estructuras Tecnológicas que soportan IoT",
+      "date": "Mayo 11 de 2026",
+      "centralTheme": "Arquitectura IoT, sensores, actuadores, conectividad, edge, fog, cloud, estándares, seguridad y resiliencia.",
+      "activity": "Mapa rápido de una solución IoT y análisis de sus componentes principales."
+    },
+    {
+      "number": 3,
+      "title": "Seguridad y riesgos para sistemas IoT",
+      "date": "Mayo 18 de 2026",
+      "centralTheme": "Riesgos, vulnerabilidades, controles, monitoreo, privacidad y buenas prácticas para dispositivos y plataformas IoT.",
+      "activity": "Simulación de alertas, clasificación de riesgos y propuesta de controles básicos."
+    },
+    {
+      "number": 4,
+      "title": "Programación de sistemas IoT",
+      "date": "Mayo 25 de 2026",
+      "centralTheme": "Desarrollo y programación de soluciones IoT mediante microcontroladores, lenguajes, protocolos, servicios y prácticas de seguridad.",
+      "activity": "Diseño breve de una idea IoT y práctica guiada con ESP32, sensor, lógica de decisión y simulación."
+    },
+    {
+      "number": 5,
+      "title": "Diseño de Hardware para IoT",
+      "date": "Junio 01 de 2026",
+      "centralTheme": "Selección de sensores, microcontroladores, comunicación, energía, protección física, mantenimiento y restricciones reales del hardware IoT.",
+      "activity": "Análisis de decisiones de hardware para un dispositivo IoT de monitoreo ambiental."
+    },
+    {
+      "number": 6,
+      "title": "Internet industrial de las cosas",
+      "date": "Junio 08 de 2026",
+      "centralTheme": "Aplicación del IoT en entornos industriales mediante sensores, máquinas, sistemas de control, analítica, productividad, eficiencia y sostenibilidad.",
+      "activity": "Diagnóstico rápido de datos industriales críticos y relación con decisiones operativas."
+    },
+    {
+      "number": 7,
+      "title": "Inteligencia artificial y aprendizaje automático",
+      "date": "2026",
+      "centralTheme": "Uso de analítica, inteligencia artificial y aprendizaje automático sobre datos provenientes de sistemas IoT.",
+      "activity": "Actividad de análisis de datos IoT y posibles decisiones predictivas."
+    },
+    {
+      "number": 8,
+      "title": "Impactos del entorno en IoT",
+      "date": "2026",
+      "centralTheme": "Impactos técnicos, sociales, éticos, ambientales, económicos y organizacionales del Internet de las cosas.",
+      "activity": "Reflexión aplicada sobre beneficios, riesgos y criterios de implementación responsable."
+    }
+  ]
+}
