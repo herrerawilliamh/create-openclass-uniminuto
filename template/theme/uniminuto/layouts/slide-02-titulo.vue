@@ -1,63 +1,45 @@
 <script setup>
-import AutoFitText from '../components/AutoFitText.vue'
+import TitleRibbon from '../components/TitleRibbon.vue'
 </script>
 
 <template>
-  <div class="slide-02-layout">
-    <img
-      class="slide-bg"
-      src="/fondos/slide-02-titulo.png"
-      alt="Fondo diapositiva título"
-    />
-
-    <div class="titulo-wrap">
-      <AutoFitText
-        tag="h1"
-        class="titulo"
-        :min="20"
-        :max="42"
-        line-height="1.05"
-      >
-        <slot name="title">Título de la presentación</slot>
-      </AutoFitText>
-    </div>
-  </div>
+  <section class="slide-02-title">
+    <TitleRibbon
+      class="slide-02-title__ribbon"
+      align="center"
+      :show-plane="true"
+      width="76%"
+      min-height="clamp(72px, 9vh, 104px)"
+      padding-x="clamp(2.2rem, 4.2vw, 5.2rem)"
+      padding-y="0.6rem"
+      plane-size="clamp(14rem, 9vw, 11rem)"
+      plane-offset-x="-7rem"
+      plane-offset-y="-8%"
+      :min="30"
+      :max="42"
+      line-height="1.25"
+    >
+      <slot name="title">Título de la sesión</slot>
+    </TitleRibbon>
+  </section>
 </template>
 
 <style scoped>
-.slide-02-layout {
+.slide-02-title {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: #ffffff;
+  background-image: url('/fondos/slide-05-template.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.slide-bg {
+.slide-02-title__ribbon {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.titulo-wrap {
-  position: absolute;
-  z-index: 2;
-  left: 33%;
-  top: 52%;
-  width: 43%;
-  height: 7%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.titulo {
-  margin: 0 !important;
-  color: #ffffff !important;
-  font-family: var(--font-title, 'Merriweather Sans', Arial, sans-serif);
-  font-weight: 800;
+  left: 51%;
+  top: 50.5%;
+  transform: translate(-50%, -50%);
 }
 </style>

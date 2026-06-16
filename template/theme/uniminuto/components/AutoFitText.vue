@@ -9,9 +9,9 @@
       lineHeight: lineHeight
     }"
   >
-    <span ref="contentEl" class="auto-fit-text__content">
+    <div ref="contentEl" class="auto-fit-text__content">
       <slot />
-    </span>
+    </div>
   </component>
 </template>
 
@@ -150,6 +150,11 @@ watch(
   line-height: inherit;
   letter-spacing: inherit;
   text-align: inherit;
+  box-sizing: border-box;
+}
+
+.auto-fit-text__content :deep(*) {
+  box-sizing: border-box;
 }
 
 .auto-fit-text--debug {

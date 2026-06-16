@@ -1,109 +1,214 @@
-/* =========================================================
-   Bloques de código institucionales con scroll
-   Se activa en la diapositiva con:
-   class: codigo-slide
-========================================================= */
+:root {
+  --uni-azul: #233763;
+  --uni-azul-profundo: #1f3158;
+  --uni-amarillo: #f2b51b;
+  --uni-naranja: #f28c00;
+  --uni-texto: #233763;
+  --uni-blanco: #ffffff;
+  --uni-safe-top: 14%;
+  --uni-safe-bottom: 8%;
+}
 
+.slidev-layout {
+  color: var(--uni-texto);
+  font-family: var(--font-body, 'Atkinson Hyperlegible', Arial, sans-serif);
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout strong {
+  color: inherit;
+}
+
+.slidev-layout p {
+  margin-top: 0;
+}
+
+/* Listas institucionales: viñetas, números, letras y romanos. */
+.slidev-layout ul,
+.slidev-layout ol {
+  margin: 0.2rem 0 0.75rem 0;
+  padding-left: 1.55em;
+  list-style-position: outside;
+}
+
+.slidev-layout ul { list-style-type: disc; }
+.slidev-layout ol { list-style-type: decimal; }
+
+.slidev-layout ol[type='a'],
+.slidev-layout ol.lista-letras,
+.slidev-layout ol.letras { list-style-type: lower-alpha; }
+
+.slidev-layout ol[type='A'],
+.slidev-layout ol.lista-letras-mayusculas,
+.slidev-layout ol.letras-mayusculas { list-style-type: upper-alpha; }
+
+.slidev-layout ol[type='i'],
+.slidev-layout ol.lista-romanos,
+.slidev-layout ol.romanos { list-style-type: lower-roman; }
+
+.slidev-layout ol[type='I'],
+.slidev-layout ol.lista-romanos-mayusculas,
+.slidev-layout ol.romanos-mayusculas { list-style-type: upper-roman; }
+
+.slidev-layout li {
+  display: list-item;
+  margin-bottom: 0.42rem;
+  padding-left: 0.15rem;
+}
+
+.slidev-layout li::marker {
+  color: var(--uni-texto);
+  font-weight: 800;
+}
+
+.slidev-layout li > ul,
+.slidev-layout li > ol {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.slidev-layout a {
+  color: var(--uni-azul);
+  font-weight: 800;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+/* Imágenes y multimedia en slots: siempre apiladas y sin deformación. */
+.uni-stack-slot,
+.uni-image-slot,
+.uni-media-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.uni-stack-slot :deep(p),
+.uni-image-slot :deep(p),
+.uni-media-slot :deep(p) {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.uni-stack-slot :deep(img),
+.uni-image-slot :deep(img) {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.uni-media-slot :deep(img),
+.uni-media-slot :deep(video),
+.uni-media-slot :deep(iframe) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border: 0;
+}
+
+/* Bloques de código institucionales con scroll. */
 .codigo-slide .slidev-code-wrapper {
-    width: 100%;
-    margin-top: 0.5rem;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin-top: 0.5rem;
 }
 
 .codigo-slide pre,
 .codigo-slide pre.slidev-code,
 .codigo-slide .slidev-code {
-    max-height: 340px !important;
-    overflow: auto !important;
-
-    background: #0f172a !important;
-    color: #e5e7eb !important;
-
-    border: 2px solid rgba(242, 181, 27, 0.75);
-    border-radius: 18px;
-
-    padding: 1rem 1.2rem !important;
-
-    font-size: 0.78rem !important;
-    line-height: 1.45 !important;
-
-    box-shadow:
-        0 18px 35px rgba(15, 23, 42, 0.20),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  max-height: 100% !important;
+  overflow: auto !important;
+  background: #0f172a !important;
+  color: #e5e7eb !important;
+  border: 2px solid rgba(242, 181, 27, 0.75);
+  border-radius: 16px;
+  padding: 0.75rem 0.95rem !important;
+  font-size: 0.68rem !important;
+  line-height: 1.36 !important;
+  box-shadow:
+    0 18px 35px rgba(15, 23, 42, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .codigo-slide pre code,
 .codigo-slide pre.slidev-code code,
 .codigo-slide .slidev-code code {
-    font-family:
-        "Cascadia Code",
-        "Fira Code",
-        "JetBrains Mono",
-        "Consolas",
-        monospace !important;
-
-    color: #e5e7eb !important;
+  font-family:
+    'Cascadia Code',
+    'Fira Code',
+    'JetBrains Mono',
+    'Consolas',
+    monospace !important;
+  color: #e5e7eb !important;
 }
 
-/* Evita que Slidev opaque líneas no resaltadas */
 .codigo-slide pre .line,
 .codigo-slide pre.slidev-code .line,
-.codigo-slide .slidev-code .line {
-    opacity: 1 !important;
-    filter: none !important;
-    min-height: 1.45em;
-}
-
-/* Evita que los tokens queden apagados */
+.codigo-slide .slidev-code .line,
 .codigo-slide pre .line span,
 .codigo-slide pre.slidev-code .line span,
 .codigo-slide .slidev-code .line span {
-    opacity: 1 !important;
-    filter: none !important;
+  opacity: 1 !important;
+  filter: none !important;
 }
 
-/* Comentarios */
 .codigo-slide pre .token.comment,
 .codigo-slide pre .token.prolog,
 .codigo-slide pre .token.doctype,
 .codigo-slide pre .token.cdata {
-    color: #94a3b8 !important;
-    opacity: 1 !important;
+  color: #94a3b8 !important;
+  opacity: 1 !important;
 }
 
-/* Números de línea */
 .codigo-slide pre .line-number,
 .codigo-slide pre .line-numbers,
 .codigo-slide pre.slidev-code .line-number,
 .codigo-slide pre.slidev-code .line-numbers {
-    color: #cbd5e1 !important;
-    opacity: 1 !important;
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
 }
 
-/* Scrollbar */
 .codigo-slide pre::-webkit-scrollbar,
 .codigo-slide pre.slidev-code::-webkit-scrollbar,
 .codigo-slide .slidev-code::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 .codigo-slide pre::-webkit-scrollbar-track,
 .codigo-slide pre.slidev-code::-webkit-scrollbar-track,
 .codigo-slide .slidev-code::-webkit-scrollbar-track {
-    background: #1e293b;
-    border-radius: 999px;
+  background: #1e293b;
+  border-radius: 999px;
 }
 
 .codigo-slide pre::-webkit-scrollbar-thumb,
 .codigo-slide pre.slidev-code::-webkit-scrollbar-thumb,
 .codigo-slide .slidev-code::-webkit-scrollbar-thumb {
-    background: var(--uni-amarillo);
-    border-radius: 999px;
-    border: 2px solid #1e293b;
-}
-
-.codigo-slide pre::-webkit-scrollbar-thumb:hover,
-.codigo-slide pre.slidev-code::-webkit-scrollbar-thumb:hover,
-.codigo-slide .slidev-code::-webkit-scrollbar-thumb:hover {
-    background: #ffcc33;
+  background: rgba(242, 181, 27, 0.8);
+  border-radius: 999px;
 }

@@ -1,6 +1,6 @@
 {
   "name": "openclass-demo",
-  "version": "1.0.1",
+  "version": "1.6.0",
   "description": "Presentaciones Open Class del curso Curso Open Class de ejemplo.",
   "type": "module",
   "private": true,
@@ -16,7 +16,7 @@
     "dev:s7": "slidev demo_semana7.md --open --port 3007",
     "dev:s8": "slidev demo_semana8.md --open --port 3008",
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
-    "clean:downloads": "node -e \"require('fs').rmSync('public/descargas',{recursive:true,force:true})\"",
+    "clean:downloads": "node -e \"require('fs').rmSync('public/descargas',{recursive:true,force:true}); require('fs').mkdirSync('public/descargas',{recursive:true})\"",
     "clean:cache": "node -e \"require('fs').rmSync('.slidev',{recursive:true,force:true}); require('fs').rmSync('node_modules/.vite',{recursive:true,force:true})\"",
     "build:index": "slidev build slides.md --out dist --base / --without-notes",
     "build:s1": "slidev build demo_semana1.md --out dist/semanas/demo_semana1 --base /semanas/demo_semana1/ --without-notes",
@@ -41,7 +41,9 @@
     "semana": "node scripts/semana.mjs",
     "pages:check": "node scripts/preparar-github-pages.mjs",
     "pages:build": "npm run export:downloads && npm run build:all",
-    "pages:preview": "npm run preview:pages"
+    "pages:preview": "npm run preview:pages",
+    "actualizar:tema": "npm create openclass-uniminuto@latest . -- --update-theme",
+    "actualizar:tema:preview": "npm run actualizar:tema && npm run dev"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "^5.2.8",

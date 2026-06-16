@@ -16,6 +16,7 @@ const targetArg = positional[0] || "openclass-uniminuto";
 const targetDir = path.resolve(process.cwd(), targetArg);
 const isCurrentDirectoryTarget = targetArg === "." || targetArg === "./";
 const forceOverwrite = flags.has("--force");
+const updateTheme = flags.has("--update-theme") || flags.has("--sync-theme");
 
 function log(message = "") {
   console.log(message);
@@ -38,6 +39,7 @@ function cleanPackageName(value) {
 function copyTemplate(src, dest) {
   const base = path.basename(src);
   if (["node_modules", "dist", ".slidev", ".git"].includes(base)) return;
+
   const stat = fs.statSync(src);
   if (stat.isDirectory()) {
     fs.mkdirSync(dest, { recursive: true });
@@ -46,12 +48,80 @@ function copyTemplate(src, dest) {
     }
     return;
   }
+
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   if (fs.existsSync(dest) && !forceOverwrite) {
     log(`↷ Conservado archivo existente: ${path.relative(targetDir, dest)}`);
     return;
   }
+
   fs.copyFileSync(src, dest);
+}
+
+function copyPathAlways(src, dest) {
+  const base = path.basename(src);
+  if (["node_modules", "dist", ".slidev", ".git"].includes(base)) return;
+
+  if (!fs.existsSync(src)) return;
+
+  const stat = fs.statSync(src);
+  if (stat.isDirectory()) {
+    fs.mkdirSync(dest, { recursive: true });
+    for (const child of fs.readdirSync(src)) {
+      copyPathAlways(path.join(src, child), path.join(dest, child));
+    }
+    return;
+  }
+
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+  log(`✓ Actualizado: ${path.relative(targetDir, dest)}`);
+}
+
+function ensureFileFromTemplate(relativePath, options = {}) {
+  const src = path.join(templateRoot, relativePath);
+  const dest = path.join(targetDir, relativePath);
+  if (!fs.existsSync(src)) return;
+  if (fs.existsSync(dest) && options.onlyIfMissing) return;
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+  log(`✓ Actualizado: ${relativePath}`);
+}
+
+function updateThemeOnly() {
+  if (!fs.existsSync(targetDir)) {
+    fail(`No existe la carpeta destino: ${targetDir}`);
+  }
+
+  log("\n┌──────────────────────────────────────────────┐");
+  log("│ Actualizar tema Open Class UNIMINUTO         │");
+  log("└──────────────────────────────────────────────┘\n");
+  log(`Destino: ${targetDir}`);
+  log("Modo: solo theme/components/styles/layouts y recursos base seguros\n");
+
+  const pathsToUpdate = [
+    "theme/uniminuto/components",
+    "theme/uniminuto/layouts",
+    "theme/uniminuto/styles",
+    "theme/uniminuto/package.json",
+    "theme/uniminuto/README-AutoFit.md",
+    "setup",
+    "snippets"
+  ];
+
+  for (const relativePath of pathsToUpdate) {
+    copyPathAlways(path.join(templateRoot, relativePath), path.join(targetDir, relativePath));
+  }
+
+  ensureFileFromTemplate("public/favicon.png", { onlyIfMissing: true });
+  ensureFileFromTemplate("public/imagenes/favicon.png", { onlyIfMissing: true });
+  ensureFileFromTemplate("public/imagenes/avion.png", { onlyIfMissing: false });
+
+  log("\n✅ Tema actualizado sin tocar semanas, slides.md ni openclass.config.json.");
+  log("   Recomendado ahora:");
+  log("     npm run dev");
+  log("     npm run export:downloads");
+  log("");
 }
 
 function isEffectivelyEmptyProject(dir) {
@@ -71,12 +141,20 @@ if (!fs.existsSync(templateRoot)) {
   fail("No se encontró la carpeta template dentro del paquete npm.");
 }
 
+if (updateTheme) {
+  updateThemeOnly();
+  process.exit(0);
+}
+
 if (fs.existsSync(targetDir) && !isEffectivelyEmptyProject(targetDir) && !forceOverwrite) {
   fail(`La carpeta destino ya contiene archivos: ${targetDir}
 
 Para trabajar dentro de un repositorio ya creado en GitHub, usa una carpeta vacía o ejecuta con --force si deseas sobrescribir archivos existentes.
 Ejemplo:
-  npm create openclass-uniminuto@latest . -- --iot --force`);
+  npm create openclass-uniminuto@latest . -- --iot --force
+
+Para actualizar únicamente layouts/tema de un proyecto existente, usa:
+  npm create openclass-uniminuto@latest . -- --update-theme`);
 }
 
 log("\n┌──────────────────────────────────────────────┐");
@@ -137,6 +215,8 @@ log("  npm run semana -- 1");
 log("  npm run dev");
 log("\nPara activar una semana adicional:");
 log("  npm run semana -- 2 --title \"Título de la semana 2\"");
+log("\nPara actualizar layouts/tema en un proyecto existente:");
+log("  npm create openclass-uniminuto@latest . -- --update-theme");
 log("\nPara revisar la publicación en GitHub Pages:");
 log("  npm run pages:check");
 log("");
