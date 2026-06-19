@@ -92,9 +92,9 @@
   overflow: hidden;
 }
 
-.uni-stack-slot :deep(p),
-.uni-image-slot :deep(p),
-.uni-media-slot :deep(p) {
+.uni-stack-slot p,
+.uni-image-slot p,
+.uni-media-slot p {
   margin: 0;
   width: 100%;
   max-width: 100%;
@@ -105,8 +105,8 @@
   gap: 0.55rem;
 }
 
-.uni-stack-slot :deep(img),
-.uni-image-slot :deep(img) {
+.uni-stack-slot img,
+.uni-image-slot img {
   display: block;
   width: auto;
   height: auto;
@@ -116,9 +116,9 @@
   object-position: center;
 }
 
-.uni-media-slot :deep(img),
-.uni-media-slot :deep(video),
-.uni-media-slot :deep(iframe) {
+.uni-media-slot img,
+.uni-media-slot video,
+.uni-media-slot iframe {
   display: block;
   width: 100%;
   height: 100%;
@@ -212,3 +212,4 @@
   background: rgba(242, 181, 27, 0.8);
   border-radius: 999px;
 }
+

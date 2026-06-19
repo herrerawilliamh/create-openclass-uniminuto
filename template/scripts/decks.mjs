@@ -1,7 +1,16 @@
+import { readdirSync } from "node:fs";
+
 function normalizeBase(value) {
   let base = value || "/";
-  if (!base.startsWith("/")) base = `/${base}`;
-  if (!base.endsWith("/")) base = `${base}/`;
+
+  if (!base.startsWith("/")) {
+    base = `/${base}`;
+  }
+
+  if (!base.endsWith("/")) {
+    base = `${base}/`;
+  }
+
   return base;
 }
 
@@ -11,19 +20,48 @@ function withBase(path = "") {
   return `${SITE_BASE}${path.replace(/^\/+/, "")}`;
 }
 
+function getWeekNumber(filename) {
+  const match = filename.match(/_semana(\d+)\.md$/i);
+  return match ? Number(match[1]) : 999;
+}
+
+function getDeckName(filename) {
+  return filename.replace(/\.md$/i, "");
+}
+
+const rootFiles = readdirSync(process.cwd(), { withFileTypes: true })
+  .filter((item) => item.isFile())
+  .map((item) => item.name);
+
+const weeklyEntries = rootFiles
+  .filter((name) => /^[a-z0-9_-]+_semana\d+\.md$/i.test(name))
+  .filter((name) => !name.startsWith("demo_"))
+  .sort((a, b) => {
+    const weekDiff = getWeekNumber(a) - getWeekNumber(b);
+    return weekDiff !== 0 ? weekDiff : a.localeCompare(b);
+  });
+
+const weeklyDecks = weeklyEntries.map((entry) => {
+  const name = getDeckName(entry);
+
+  return {
+    name,
+    entry,
+    out: `dist/semanas/${name}`,
+    base: withBase(`semanas/${name}/`),
+    exportable: true,
+  };
+});
+
 export const decks = [
   {
-    name: "openclass-demo",
+    name: "openclass-main",
     entry: "slides.md",
     out: "dist",
     base: SITE_BASE,
     exportable: false,
   },
-  {
-    name: "demo_semana1",
-    entry: "demo_semana1.md",
-    out: "dist/semanas/demo_semana1",
-    base: withBase("semanas/demo_semana1/"),
-    exportable: true,
-  },
+  ...weeklyDecks,
 ];
+
+export default decks;

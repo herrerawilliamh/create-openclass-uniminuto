@@ -15,8 +15,21 @@ const positional = args.filter((arg) => !arg.startsWith("--"));
 const targetArg = positional[0] || "openclass-uniminuto";
 const targetDir = path.resolve(process.cwd(), targetArg);
 const isCurrentDirectoryTarget = targetArg === "." || targetArg === "./";
-const forceOverwrite = flags.has("--force");
-const updateTheme = flags.has("--update-theme") || flags.has("--sync-theme");
+function envFlag(name) {
+  const value = process.env[name];
+  if (value === undefined) return false;
+  return ["1", "true", "yes", "on"].includes(String(value).toLowerCase());
+}
+
+const forceOverwrite =
+  flags.has("--force") ||
+  envFlag("npm_config_force");
+
+const updateTheme =
+  flags.has("--update-theme") ||
+  flags.has("--sync-theme") ||
+  envFlag("npm_config_update_theme") ||
+  envFlag("npm_config_sync_theme");
 
 function log(message = "") {
   console.log(message);
@@ -100,13 +113,23 @@ function updateThemeOnly() {
   log("Modo: solo theme/components/styles/layouts y recursos base seguros\n");
 
   const pathsToUpdate = [
-    "theme/uniminuto/components",
+    "README.md",
+"theme/uniminuto/components",
     "theme/uniminuto/layouts",
     "theme/uniminuto/styles",
     "theme/uniminuto/package.json",
     "theme/uniminuto/README-AutoFit.md",
     "setup",
-    "snippets"
+    "snippets",
+    "scripts/build-site.mjs",
+    "scripts/build-incremental.mjs",
+    "scripts/decks.mjs",
+    "scripts/dev-all.mjs",
+    "scripts/export-downloads.mjs",
+    "scripts/export-incremental.mjs",
+    "scripts/preparar-github-pages.mjs",
+    "scripts/semana.mjs",
+    ".github/workflows/deploy.yml"
   ];
 
   for (const relativePath of pathsToUpdate) {
@@ -117,6 +140,37 @@ function updateThemeOnly() {
   ensureFileFromTemplate("public/imagenes/favicon.png", { onlyIfMissing: true });
   ensureFileFromTemplate("public/imagenes/avion.png", { onlyIfMissing: false });
 
+  patchJson(path.join(targetDir, "package.json"), (pkg) => {
+    pkg.scripts = pkg.scripts || {};
+    pkg.scripts["dev"] = pkg.scripts["dev"] || "slidev slides.md --open --port 3000";
+    pkg.scripts["dev:all"] = "node scripts/dev-all.mjs";
+    pkg.scripts["dev:todo"] = "node scripts/dev-all.mjs";
+    pkg.scripts["build:all"] = "node scripts/build-site.mjs";
+    pkg.scripts["build:incremental"] = "node scripts/build-incremental.mjs";
+    pkg.scripts["export:downloads"] = "node scripts/export-downloads.mjs";
+    pkg.scripts["export:incremental"] = "node scripts/export-incremental.mjs";
+    pkg.scripts["pages:check"] = "node scripts/preparar-github-pages.mjs";
+    pkg.scripts["pages:build"] = "npm run export:downloads && npm run build:all";
+    pkg.scripts["pages:preview"] = "npm run preview:pages";
+    pkg.scripts["semana"] = "node scripts/semana.mjs";
+    pkg.scripts["actualizar:tema"] = "npm create openclass-uniminuto@latest . -- --update-theme";
+  });
+
+  patchJson(path.join(targetDir, "package.json"), (pkg) => {
+    pkg.scripts = pkg.scripts || {};
+    pkg.scripts["dev"] = pkg.scripts["dev"] || "slidev slides.md --open --port 3000";
+    pkg.scripts["dev:all"] = "node scripts/dev-all.mjs";
+    pkg.scripts["dev:todo"] = "node scripts/dev-all.mjs";
+    pkg.scripts["build:all"] = "node scripts/build-site.mjs";
+    pkg.scripts["build:incremental"] = "node scripts/build-incremental.mjs";
+    pkg.scripts["export:downloads"] = "node scripts/export-downloads.mjs";
+    pkg.scripts["export:incremental"] = "node scripts/export-incremental.mjs";
+    pkg.scripts["pages:check"] = "node scripts/preparar-github-pages.mjs";
+    pkg.scripts["pages:build"] = "npm run export:downloads && npm run build:all";
+    pkg.scripts["pages:preview"] = "npm run preview:pages";
+    pkg.scripts["semana"] = "node scripts/semana.mjs";
+    pkg.scripts["actualizar:tema"] = "npm create openclass-uniminuto@latest . -- --update-theme";
+  });
   log("\n✅ Tema actualizado sin tocar semanas, slides.md ni openclass.config.json.");
   log("   Recomendado ahora:");
   log("     npm run dev");
@@ -220,3 +274,5 @@ log("  npm create openclass-uniminuto@latest . -- --update-theme");
 log("\nPara revisar la publicación en GitHub Pages:");
 log("  npm run pages:check");
 log("");
+
+

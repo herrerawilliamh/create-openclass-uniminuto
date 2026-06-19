@@ -1,6 +1,6 @@
 {
   "name": "openclass-demo",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "description": "Presentaciones Open Class del curso Curso Open Class de ejemplo.",
   "type": "module",
   "private": true,
@@ -43,7 +43,8 @@
     "pages:build": "npm run export:downloads && npm run build:all",
     "pages:preview": "npm run preview:pages",
     "actualizar:tema": "npm create openclass-uniminuto@latest . -- --update-theme",
-    "actualizar:tema:preview": "npm run actualizar:tema && npm run dev"
+    "actualizar:tema:preview": "npm run actualizar:tema && npm run dev",
+    "dev:all": "node scripts/dev-all.mjs"
   },
   "dependencies": {
     "@fontsource/atkinson-hyperlegible": "^5.2.8",
