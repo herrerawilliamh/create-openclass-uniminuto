@@ -1,6 +1,6 @@
 {
   "name": "create-openclass-uniminuto",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Creador de proyectos Open Class UNIMINUTO basados en Slidev, con generación incremental por semanas, actualización de tema y GitHub Pages.",
   "type": "module",
   "bin": {
