@@ -42,7 +42,7 @@ jobs:
       - name: Install Chromium for Slidev export
         run: npx playwright install chromium --with-deps
 
-      - name: Generate and build Open Class
+      - name: Generate, export and build Open Class
         run: npm run pages:build
 
       - name: Upload GitHub Pages artifact

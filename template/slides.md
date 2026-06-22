@@ -58,7 +58,7 @@ Presentaciones disponibles
 ::right::
 ### Próximamente
 
-Activa más semanas en `openclass.config.json` y ejecuta `npm run config`.
+Activa más semanas con `npm run semana -- 2`, `npm run semana -- 3` y así sucesivamente.
 
 ---
 layout: slide-12-cierre
