@@ -133,7 +133,7 @@ Este archivo no se sobrescribe por defecto. Eso permite conservar el contenido d
 
 ### `plantillas/semana.md`
 
-Plantilla base usada al crear una semana nueva. Debe incluir ejemplos de todos los layouts disponibles para que funcione como catálogo inicial.
+Plantilla base usada al crear una semana nueva. Incluye ejemplos de layouts, listas, revelado progresivo con `v-click` y estructuras frecuentes de Open Class.
 
 ### `plantillas/launcher.md`
 
@@ -514,7 +514,180 @@ incluye ejemplos de uso para cada layout.
 
 ---
 
-## 11. Recomendaciones de edición
+## 11. Listas, v-clicks y ajuste automático de contenido
+
+El tema institucional incluye soporte visual para listas no ordenadas, listas numéricas, listas alfabéticas y listas romanas.
+
+### Listas no ordenadas
+
+Markdown permite crear listas no ordenadas con `*`, `-` o `+`.
+
+```md
+* Primer punto
+* Segundo punto
+* Tercer punto
+```
+
+También es válido:
+
+```md
+- Primer punto
+- Segundo punto
+- Tercer punto
+```
+
+Ambas formas se renderizan como una lista HTML tipo `ul`.
+
+### Listas ordenadas numéricas
+
+Para listas ordenadas numéricas, usa Markdown con números:
+
+```md
+1. Primer paso
+2. Segundo paso
+3. Tercer paso
+```
+
+### Listas alfabéticas
+
+Para listas con letras mayúsculas o minúsculas, se recomienda usar HTML dentro de la diapositiva.
+
+```html
+<ol type="A">
+  <li>Primer criterio</li>
+  <li>Segundo criterio</li>
+  <li>Tercer criterio</li>
+</ol>
+```
+
+```html
+<ol type="a">
+  <li>Primera opción</li>
+  <li>Segunda opción</li>
+  <li>Tercera opción</li>
+</ol>
+```
+
+### Listas romanas
+
+```html
+<ol type="I">
+  <li>Primera fase</li>
+  <li>Segunda fase</li>
+  <li>Tercera fase</li>
+</ol>
+```
+
+```html
+<ol type="i">
+  <li>Primer componente</li>
+  <li>Segundo componente</li>
+  <li>Tercer componente</li>
+</ol>
+```
+
+### Revelar elementos con clics
+
+Para revelar una lista punto por punto:
+
+```md
+<v-clicks>
+
+- Primer punto
+- Segundo punto
+- Tercer punto
+
+</v-clicks>
+```
+
+Para controlar manualmente cada elemento:
+
+```html
+<ul>
+  <li v-click>Primer punto</li>
+  <li v-click>Segundo punto</li>
+  <li v-click>Tercer punto</li>
+</ul>
+```
+
+Para títulos, etiquetas o párrafos sueltos:
+
+```html
+<p v-click><strong>Instrucciones:</strong></p>
+
+<ol>
+  <li v-click>Primer paso.</li>
+  <li v-click>Segundo paso.</li>
+</ol>
+
+<p v-click><strong>Producto:</strong> evidencia esperada de la actividad.</p>
+```
+
+Para revelar bloques completos:
+
+```md
+<div v-click>
+
+**Instrucciones:**
+
+</div>
+
+<div v-click>
+
+1. Primer paso de la actividad.
+
+</div>
+
+<div v-click>
+
+**Producto:** resultado esperado.
+
+</div>
+```
+
+### Ajuste automático de contenido
+
+Los layouts principales usan `AutoFitText`, un componente que intenta ajustar el tamaño del texto al área disponible.
+
+Cuando una diapositiva usa `v-click`, el contenido visible cambia con cada clic. Si el valor `max` del texto es demasiado alto, el contenido puede verse muy grande cuando hay pocos elementos visibles y luego reducirse al aparecer más elementos.
+
+Recomendaciones:
+
+* Usa `v-click` en `<p>`, `<li>`, `<span>` o bloques pequeños.
+* Usa `<v-clicks>` cuando quieras revelar automáticamente los elementos hijos.
+* Para listas numeradas, usa `<ol><li v-click>...</li></ol>`.
+* Para listas alfabéticas, usa `<ol type="A">` o `<ol type="a">`.
+* Evita saturar una sola diapositiva con demasiado texto.
+* En contenidos con clics, evita valores `max` demasiado altos.
+* Para Open Class, un rango estable suele estar entre `max="22"` y `max="24"` en contenidos.
+* Si el contenido no cabe con ese rango, divide la información en dos diapositivas.
+
+### Transiciones en Slidev
+
+Las transiciones entre diapositivas se controlan con `transition`.
+
+Ejemplo global en el lanzador raíz:
+
+```md
+---
+transition: fade
+---
+```
+
+Ejemplo por diapositiva:
+
+```md
+---
+layout: slide-08-titulo-texto
+transition: slide-left
+---
+```
+
+Recomendación: usar `fade` como transición general y reservar `v-click`, `<v-click>` o `<v-clicks>` para revelar ideas dentro de una misma diapositiva.
+
+---
+
+## 12. Recomendaciones de edición
 
 No editar manualmente estos archivos salvo que estés modificando la infraestructura:
 
@@ -541,7 +714,7 @@ public/imagenes/
 
 ---
 
-## 12. Despliegue con GitHub Pages
+## 13. Despliegue con GitHub Pages
 
 El workflow está en:
 
@@ -565,7 +738,25 @@ y se publica automáticamente con GitHub Pages.
 
 ---
 
-## 13. Solución de problemas frecuentes
+## 14. Solución de problemas frecuentes
+
+### Error en un layout Vue
+
+Si aparece un error similar a:
+
+```text
+Element is missing end tag
+```
+
+revisar el archivo indicado por la terminal. Normalmente significa que un componente, etiqueta HTML o bloque Vue quedó mal cerrado.
+
+Ejemplo correcto:
+
+```vue
+<TitleRibbon>
+  <slot name="title">Agrega un título</slot>
+</TitleRibbon>
+```
 
 ### Error en `scripts/decks.mjs`
 
@@ -619,9 +810,21 @@ public/fondos/slide-05-template.png
 public/fondos/slide-06-cierre.png
 ```
 
+### El texto cambia mucho de tamaño con los clics
+
+Si una diapositiva usa `v-click` y el texto se agranda o se reduce demasiado al avanzar o retroceder, revisar el valor `max` del `AutoFitText` del layout.
+
+Para contenidos con revelado progresivo se recomienda usar valores moderados:
+
+```vue
+<AutoFitText tag="div" class="content-fit" :min="15" :max="24" line-height="1.26">
+```
+
+Si el contenido sigue sin caber, es mejor dividirlo en dos diapositivas.
+
 ---
 
-## 14. Flujo de mantenimiento del template
+## 15. Flujo de mantenimiento del template
 
 Cuando se mejore el template base:
 

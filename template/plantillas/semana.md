@@ -1,6 +1,6 @@
 ---
-layout: slide-01-portada
----
+
+## layout: slide-01-portada
 
 ::title::
 {{COURSE_NAME}}
@@ -12,15 +12,15 @@ Semana {{WEEK_NUMBER}} — {{WEEK_TITLE}}
 {{WEEK_DATE}}
 
 ---
-layout: slide-02-titulo
----
+
+## layout: slide-02-titulo
 
 ::title::
 Ruta de la Open Class
 
 ---
-layout: slide-08-titulo-texto
----
+
+## layout: slide-08-titulo-texto
 
 ::title::
 Contexto de la semana
@@ -31,8 +31,8 @@ Esta sesión aborda el tema **{{WEEK_THEME}}** desde una perspectiva aplicada, a
 La intención es que el estudiante relacione los conceptos centrales de la semana con situaciones reales del campo disciplinar, identifique problemas, analice alternativas y proponga decisiones fundamentadas.
 
 ---
-layout: slide-09-objetivos
----
+
+## layout: slide-09-objetivos
 
 ::title::
 Objetivos de aprendizaje
@@ -46,14 +46,13 @@ Al finalizar esta Open Class, el estudiante estará en capacidad de:
 4. Formular conclusiones que evidencien comprensión, argumentación y transferencia.
 
 ---
-layout: slide-03-imagen-izquierda
----
+
+## layout: slide-03-imagen-izquierda
 
 ::title::
 Lectura inicial del problema
 
-::image:: 
-<img src="/imagenes/favicon.png" alt="Imagen institucional de apoyo" />
+::image:: <img src="/imagenes/favicon.png" alt="Imagen institucional de apoyo" />
 
 ::content::
 En esta sección se presenta una situación inicial que permite introducir el tema de la semana.
@@ -67,8 +66,8 @@ Ejemplo:
 `/imagenes/nombre_de_la_imagen.png`
 
 ---
-layout: slide-04-imagen-derecha
----
+
+## layout: slide-04-imagen-derecha
 
 ::title::
 Análisis del contexto
@@ -83,18 +82,16 @@ Puedes usarlo para:
 * Explicar un flujo.
 * Relacionar conceptos con una situación profesional.
 
-::image:: 
-<img src="/imagenes/favicon.png" alt="Imagen de apoyo para análisis del contexto" />
+::image:: <img src="/imagenes/favicon.png" alt="Imagen de apoyo para análisis del contexto" />
 
 ---
-layout: slide-05-titulo-superior-texto-derecha
----
+
+## layout: slide-05-titulo-superior-texto-derecha
 
 ::title::
 Concepto clave de la semana
 
-::image:: 
-<img src="/imagenes/favicon.png" alt="Imagen conceptual de apoyo" />
+::image:: <img src="/imagenes/favicon.png" alt="Imagen conceptual de apoyo" />
 
 ::content::
 Este layout permite destacar una imagen amplia en la parte izquierda y ubicar la explicación en la parte derecha.
@@ -110,8 +107,8 @@ Ejemplo de uso:
 * Representación visual de un caso.
 
 ---
-layout: slide-06-titulo-superior-texto-izquierda
----
+
+## layout: slide-06-titulo-superior-texto-izquierda
 
 ::title::
 Relación entre teoría y práctica
@@ -128,12 +125,11 @@ Se recomienda usarlo para:
 3. Introducir una práctica guiada.
 4. Preparar al estudiante para una actividad.
 
-::image:: 
-<img src="/imagenes/favicon.png" alt="Imagen de apoyo para teoría y práctica" />
+::image:: <img src="/imagenes/favicon.png" alt="Imagen de apoyo para teoría y práctica" />
 
 ---
-layout: slide-07-multimedia-con-titulo
----
+
+## layout: slide-07-multimedia-con-titulo
 
 ::title::
 Recurso multimedia de apoyo
@@ -151,8 +147,8 @@ Recurso multimedia de apoyo
 </iframe>
 
 ---
-layout: slide-08-titulo-texto
----
+
+## layout: slide-08-titulo-texto
 
 ::title::
 Síntesis conceptual
@@ -170,8 +166,8 @@ Ejemplo de estructura sugerida:
 También puedes usar párrafos breves cuando necesites explicar una idea con mayor profundidad académica.
 
 ---
-layout: slide-10-titulo-dos-columnas
----
+
+## layout: slide-10-titulo-dos-columnas
 
 ::title::
 Comparación de enfoques
@@ -199,8 +195,8 @@ Este espacio puede usarse para contrastar una segunda postura, alternativa, comp
 * Ejemplo aplicado.
 
 ---
-layout: slide-11-dos-titulos-dos-columnas
----
+
+## layout: slide-11-dos-titulos-dos-columnas
 
 ::leftTitle::
 Antes del análisis
@@ -229,8 +225,8 @@ Ejemplo:
 * Conclusiones argumentadas.
 
 ---
-layout: slide-codigo
----
+
+## layout: slide-codigo
 
 ::title::
 Ejemplo técnico guiado
@@ -254,8 +250,8 @@ presentar_contexto(tema, actividad)
 ```
 
 ---
-layout: slide-08-titulo-texto
----
+
+## layout: slide-08-titulo-texto
 
 ::title::
 Actividad de aplicación
@@ -274,8 +270,8 @@ Orientaciones sugeridas:
 Duración estimada: **{{WEEK_DURATION}}**.
 
 ---
-layout: slide-10-titulo-dos-columnas
----
+
+## layout: slide-10-titulo-dos-columnas
 
 ::title::
 Preguntas orientadoras
@@ -299,5 +295,91 @@ Preguntas orientadoras
 * ¿Qué aprendizaje se transfiere a un contexto profesional?
 
 ---
-layout: slide-12-cierre
+
+## layout: slide-08-titulo-texto
+
+::title::
+Plantilla para listas y revelado progresivo
+
+::content::
+
+<p v-click><strong>Lista no ordenada:</strong></p>
+
+<ul>
+  <li v-click>Puede escribirse con asterisco, guion o HTML.</li>
+  <li v-click>Funciona bien para ideas, criterios y recomendaciones.</li>
+</ul>
+
+<p v-click><strong>Lista ordenada:</strong></p>
+
+<ol>
+  <li v-click>Primer paso.</li>
+  <li v-click>Segundo paso.</li>
+  <li v-click>Tercer paso.</li>
+</ol>
+
+<p v-click><strong>Lista alfabética:</strong></p>
+
+<ol type="A">
+  <li v-click>Primer criterio.</li>
+  <li v-click>Segundo criterio.</li>
+  <li v-click>Tercer criterio.</li>
+</ol>
+
 ---
+
+## layout: slide-08-titulo-texto
+
+::title::
+Plantilla para instrucciones con clics
+
+::content::
+
+<p v-click><strong>Instrucciones:</strong></p>
+
+<ol>
+  <li v-click>Leer la situación propuesta por el docente.</li>
+  <li v-click>Identificar los conceptos principales de la semana.</li>
+  <li v-click>Analizar alternativas de solución o interpretación.</li>
+  <li v-click>Socializar una conclusión breve con argumentos.</li>
+</ol>
+
+<p v-click><strong>Producto:</strong> una respuesta breve con criterio, evidencia y conclusión.</p>
+
+---
+
+## layout: slide-11-dos-titulos-dos-columnas
+
+::leftTitle:: <span v-click>Plantilla animación antes del análisis</span>
+
+::rightTitle:: <span v-click>Plantilla animación después del análisis</span>
+
+::left::
+
+<p v-click>En esta columna puedes describir la situación inicial, las ideas previas, los datos disponibles o las condiciones del problema.</p>
+
+<p v-click><strong>Ejemplo:</strong></p>
+
+<ul>
+  <li v-click>Información dispersa.</li>
+  <li v-click>Criterios poco claros.</li>
+  <li v-click>Necesidad de priorización.</li>
+  <li v-click>Dudas frente a la toma de decisiones.</li>
+</ul>
+
+::right::
+
+<p v-click>En esta columna puedes mostrar el resultado esperado después del análisis.</p>
+
+<p v-click><strong>Ejemplo:</strong></p>
+
+<ul>
+  <li v-click>Criterios definidos.</li>
+  <li v-click>Decisiones justificadas.</li>
+  <li v-click>Evidencias organizadas.</li>
+  <li v-click>Conclusiones argumentadas.</li>
+</ul>
+
+---
+
+## layout: slide-12-cierre

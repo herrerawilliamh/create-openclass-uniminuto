@@ -14,7 +14,7 @@ import TitleRibbon from '../components/TitleRibbon.vue'
     </div>
 
     <div class="content-wrap">
-      <AutoFitText tag="div" class="content-fit" :min="15" :max="30" line-height="1.26">
+      <AutoFitText tag="div" class="content-fit" :min="15" :max="24" line-height="1.26">
         <slot name="content" />
       </AutoFitText>
     </div>
@@ -82,3 +82,4 @@ import TitleRibbon from '../components/TitleRibbon.vue'
 .content-fit :deep(li::marker) { color: #233763 !important; font-weight: 900; }
 .content-fit :deep(pre) { font-size: 0.58em; line-height: 1.22; }
 </style>
+

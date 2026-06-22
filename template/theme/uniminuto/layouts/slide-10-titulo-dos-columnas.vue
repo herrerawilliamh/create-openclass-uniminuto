@@ -13,13 +13,13 @@ import AutoFitText from '../components/AutoFitText.vue'
     </div>
 
     <div class="left-wrap">
-      <AutoFitText tag="div" class="column-fit" :min="14" :max="33" line-height="1.28">
+      <AutoFitText tag="div" class="column-fit" :min="14" :max="24" line-height="1.28">
         <slot name="left" />
       </AutoFitText>
     </div>
 
     <div class="right-wrap">
-      <AutoFitText tag="div" class="column-fit" :min="14" :max="33" line-height="1.28">
+      <AutoFitText tag="div" class="column-fit" :min="14" :max="24" line-height="1.28">
         <slot name="right" />
       </AutoFitText>
     </div>
@@ -55,3 +55,5 @@ import AutoFitText from '../components/AutoFitText.vue'
 .column-fit :deep(pre) { font-size: 0.58em; line-height: 1.22; }
 
 </style>
+
+

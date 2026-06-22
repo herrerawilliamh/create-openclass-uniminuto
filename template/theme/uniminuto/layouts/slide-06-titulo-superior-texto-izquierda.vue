@@ -13,7 +13,7 @@ import AutoFitText from '../components/AutoFitText.vue'
     </div>
 
     <div class="content-wrap">
-      <AutoFitText tag="div" class="content-fit" :min="16" :max="34" line-height="1.28">
+      <AutoFitText tag="div" class="content-fit" :min="16" :max="24" line-height="1.28">
         <slot name="content" />
       </AutoFitText>
     </div>
@@ -57,3 +57,5 @@ import AutoFitText from '../components/AutoFitText.vue'
 .content-fit :deep(pre) { font-size: 0.58em; line-height: 1.22; }
 
 </style>
+
+
