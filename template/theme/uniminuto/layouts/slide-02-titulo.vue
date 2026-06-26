@@ -1,9 +1,14 @@
 <script setup>
 import TitleRibbon from '../components/TitleRibbon.vue'
+import { assetUrl } from '../utils/asset-url.js'
+
+const slideStyle = {
+  backgroundImage: `url("${assetUrl('/fondos/slide-05-template.png')}")`,
+}
 </script>
 
 <template>
-  <section class="slide-02-title">
+  <section class="slide-02-title" :style="slideStyle">
     <TitleRibbon
       class="slide-02-title__ribbon"
       align="center"
@@ -12,7 +17,7 @@ import TitleRibbon from '../components/TitleRibbon.vue'
       min-height="clamp(72px, 9vh, 104px)"
       padding-x="clamp(2.2rem, 4.2vw, 5.2rem)"
       padding-y="0.6rem"
-      plane-size="clamp(14rem, 9vw, 11rem)"
+      plane-size="clamp(8rem, 12vw, 14rem)"
       plane-offset-x="-7rem"
       plane-offset-y="-8%"
       :min="30"
@@ -30,7 +35,6 @@ import TitleRibbon from '../components/TitleRibbon.vue'
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-image: url('/fondos/slide-05-template.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

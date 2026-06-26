@@ -2,7 +2,7 @@
   <div
     class="title-ribbon"
     :class="[
-      `title-ribbon--${side}`,
+      `title-ribbon--${resolvedSide}`,
       {
         'title-ribbon--with-plane': resolvedShowPlane,
         'title-ribbon--shadow': shadow,
@@ -13,7 +13,7 @@
     <img
       v-if="resolvedShowPlane"
       class="title-ribbon__plane"
-      :src="planeSrc"
+      :src="resolvedPlaneSrc"
       alt=""
       aria-hidden="true"
     />
@@ -28,11 +28,17 @@
 
 <script setup>
 import { computed } from "vue";
+import { assetUrl } from "../utils/asset-url.js";
 
 const props = defineProps({
   side: {
     type: String,
     default: "center",
+  },
+
+  align: {
+    type: String,
+    default: "",
   },
 
   showPlane: {
@@ -106,7 +112,9 @@ const props = defineProps({
   },
 });
 
+const resolvedSide = computed(() => props.align || props.side);
 const resolvedShowPlane = computed(() => props.showPlane || props.withPlane);
+const resolvedPlaneSrc = computed(() => assetUrl(props.planeSrc));
 
 const cssVars = computed(() => ({
   "--title-ribbon-width": props.width,
