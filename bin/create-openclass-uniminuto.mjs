@@ -309,6 +309,7 @@ function updateThemeOnly() {
     "theme/uniminuto/components",
     "theme/uniminuto/layouts",
     "theme/uniminuto/styles",
+    "theme/uniminuto/utils",
     "theme/uniminuto/package.json",
     "theme/uniminuto/README-AutoFit.md",
 
